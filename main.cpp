@@ -86,13 +86,6 @@ void dibujaArco(PV2D* pIni, PV2D* pFin, GLdouble bAux, int i) {
 		l2->forward(-bAux, 0);
 	}
 	centro = l2->getPos();
-	/*glBegin(GL_POINTS);
-	glColor3f(0.0,1.0,0.0);
-	glPointSize(50);
-	glVertex2d(centro->getX(), centro->getY());
-	glColor3f(1.0, 0.0, 0.0);
-	glPointSize(4.0);
-	glEnd();*/
 	
 	if (i % 4 == 0){
 		l2->moveTo(pIni, 0);
@@ -106,15 +99,8 @@ void dibujaArco(PV2D* pIni, PV2D* pFin, GLdouble bAux, int i) {
 	else if (i % 4 == 3){
 		l2->moveTo(pFin, 0);
 	}
-	glBegin(GL_POINTS);
-		glColor3f(1.0, 1.0, 0.0);
-		glPointSize(50);
-		glVertex2f(pIni->getX(), pIni->getY());
-		glColor3f(1.0, 0.0, 0.0);
-	glEnd();
 	for (int j = 1 ; j <= N; j++) {
 		GLdouble alfa = ((M_PI / 2) / N) * j;
-		cout << alfa << endl;
 		GLdouble x = bAux * (cos(alfa));
 		GLdouble y = bAux * (sin(alfa));
 		
@@ -130,19 +116,9 @@ void dibujaArco(PV2D* pIni, PV2D* pFin, GLdouble bAux, int i) {
 			x = -x;
 			y = -y;
 		}
-		if (j == 1)
-			glColor3f(1.0, 0.0, 0.0);
-		else if (j ==2)
-			glColor3f(0.0, 0.0, 1.0);
-		else if (j==3)
-			glColor3f(0.0, 1.0, 0.0);
-		else if (j ==4)
-			glColor3f(1.0, 0.0, 1.0);
-
+	
 		l2->moveTo(new PV2D(x + centro->getX(), y + centro->getY(),1),1);
 	}
-	glColor3f(1.0, 0.0, 0.0);
-	cout << "Arco " << i << " pintado." << endl;
 	//l2->moveTo(pFin, 1);
 	delete l2;
 
