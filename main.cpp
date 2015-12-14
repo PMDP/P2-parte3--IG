@@ -1,6 +1,14 @@
-#include <Windows.h>
-#include <gl/GL.h>
-#include <gl/GLU.h>
+#define __win32
+
+
+#ifdef __win32
+	#include <Windows.h>
+	#include <gl/GL.h>
+	#include <gl/GLU.h>
+#elif
+	#include <GL/gl.h>
+	#include <GL/glut.>
+#endif
 
 #include <GL/freeglut.h>
 //#include <GL/glut.h>
